@@ -1,0 +1,258 @@
+:root {
+  --ink: #1b2430;
+  --muted: #3d4a58;
+  --card: #ffffff;
+  --play: #ffc414;
+  --play-hover: #ffd24a;
+  --accent: #2a6edb;
+  --accent-soft: #e8f1ff;
+  --line: rgba(27, 36, 48, 0.1);
+  --shadow: 0 0.6rem 1.6rem rgba(30, 50, 80, 0.14);
+  --radius: 1.25rem;
+  --font: "Avenir Next", "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--ink);
+  line-height: 1.45;
+  background-color: #fff6e8;
+  background-image:
+    radial-gradient(900px 520px at 0% -10%, #ffe08a 0%, transparent 55%),
+    radial-gradient(800px 480px at 100% 0%, #9fd0ff 0%, transparent 50%),
+    radial-gradient(700px 400px at 50% 110%, #ffd0a8 0%, transparent 55%),
+    linear-gradient(#fff8ee, #eef6ff 70%);
+  background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.site-header {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 1.1rem;
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.95rem;
+}
+
+.logo {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 0 rgba(27, 36, 48, 0.12);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.15rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.lede {
+  margin: 0.85rem auto 0;
+  max-width: 34rem;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem 2.5rem;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.15rem;
+}
+
+.card {
+  flex: 1 1 100%;
+  max-width: 100%;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.thumb {
+  display: block;
+  background: #0e1320;
+}
+
+.thumb img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.card-body {
+  padding: 1rem 1.05rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.35rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.blurb {
+  margin: 0 0 0.55rem;
+  color: var(--muted);
+  font-weight: 600;
+  min-height: 2.7em;
+}
+
+.play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.15rem;
+  padding: 0.7rem 1rem;
+  background: var(--play);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 rgba(160, 100, 0, 0.35);
+  letter-spacing: 0.01em;
+}
+
+.play:hover,
+.play:focus-visible {
+  background: var(--play-hover);
+}
+
+.play:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(160, 100, 0, 0.35);
+}
+
+.itch {
+  display: inline-block;
+  align-self: center;
+  margin-top: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.itch:hover,
+.itch:focus-visible {
+  border-bottom-color: var(--accent);
+}
+
+.tip {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--accent-soft);
+  border-radius: 0.7rem;
+  padding: 0.45rem 0.7rem;
+  text-align: center;
+}
+
+.site-footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.25rem 1.25rem 2.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    gap: 1.25rem;
+  }
+
+  .card {
+    flex-basis: calc(50% - 0.65rem);
+    max-width: calc(50% - 0.65rem);
+  }
+
+  .site-header {
+    padding-top: 2.1rem;
+    padding-bottom: 1.4rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    gap: 1.4rem;
+  }
+
+  .card {
+    flex-basis: calc(33.333% - 0.95rem);
+    max-width: calc(33.333% - 0.95rem);
+  }
+}
+
+@media (min-width: 1100px) {
+  main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play:active {
+    transform: none;
+  }
+}
