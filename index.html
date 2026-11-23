@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JMCX Games</title>
-  <meta name="description" content="Play James Murray's classroom games in your browser — Word Blitz, Math Blitz Classic, Spirograph Studio, and Worksheet Bank.">
+  <meta name="description" content="Play James Murray's classroom games in your browser — Word Blitz Classic, Math Blitz Classic, Spirograph Studio, and Worksheet Bank.">
   <meta name="theme-color" content="#2a6edb">
   <meta property="og:title" content="JMCX Games">
-  <meta property="og:description" content="Play James Murray's classroom games in your browser — Word Blitz, Math Blitz Classic, Spirograph Studio, and Worksheet Bank.">
+  <meta property="og:description" content="Play James Murray's classroom games in your browser — Word Blitz Classic, Math Blitz Classic, Spirograph Studio, and Worksheet Bank.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="JMCX Games">
-  <meta name="twitter:description" content="Play James Murray's classroom games in your browser — Word Blitz, Math Blitz Classic, Spirograph Studio, and Worksheet Bank.">
+  <meta name="twitter:description" content="Play James Murray's classroom games in your browser — Word Blitz Classic, Math Blitz Classic, Spirograph Studio, and Worksheet Bank.">
   <meta name="twitter:image" content="assets/og-image.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon.ico" sizes="48x48">
@@ -20,6 +20,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <nav class="topbar">
+    <span class="topbar-name">JMCX Games</span>
+    <button type="button" class="donate-btn" id="donateOpen">$ Donate</button>
+  </nav>
   <header class="site-header">
     <div class="brand">
       <img class="logo" src="assets/favicon.svg" width="56" height="56" alt="">
@@ -84,5 +88,39 @@
   <footer class="site-footer">
     <p>Made by James Murray</p>
   </footer>
+
+  <dialog id="donateDialog" class="donate-dialog" aria-labelledby="donateTitle">
+    <form method="dialog" class="donate-close-row"><button class="donate-x" aria-label="Close">&times;</button></form>
+    <h2 id="donateTitle">Support JMCX Games</h2>
+    <div id="gate">
+      <p class="gate-label">Ask a grown-up</p>
+      <form id="gateForm">
+        <label for="gateInput" id="gateQ"></label>
+        <input id="gateInput" inputmode="numeric" autocomplete="off" maxlength="3" required>
+        <button type="submit" class="gate-go">Check</button>
+      </form>
+      <p id="gateMsg" class="gate-msg" aria-live="polite"></p>
+    </div>
+    <div id="tiers" hidden>
+      <button type="button" class="tier" data-url="https://paypal.me/jjmurray64/2"><strong>$2</strong> Data bytes for the bots</button>
+      <button type="button" class="tier" data-url="https://paypal.me/jjmurray64/5"><strong>$5</strong> Buy JMCX a coffee</button>
+    </div>
+    <p class="donate-note">Opens PayPal. Optional, and always appreciated.</p>
+  </dialog>
+  <script>
+  (function(){
+    var d=document.getElementById('donateDialog'),q=document.getElementById('gateQ'),inp=document.getElementById('gateInput'),
+        msg=document.getElementById('gateMsg'),gate=document.getElementById('gate'),tiers=document.getElementById('tiers'),ans=0;
+    function r(a,b){return a+Math.floor(Math.random()*(b-a+1));}
+    function newQ(){var a=r(3,9),b=r(3,9),c=r(2,9),plus=Math.random()<0.5;ans=plus?a*b+c:a*b-c;
+      q.textContent='What is '+a+' \u00d7 '+b+' '+(plus?'+':'\u2212')+' '+c+'?';
+      inp.setAttribute('aria-label','What is '+a+' times '+b+(plus?' plus ':' minus ')+c+'?');inp.value='';}
+    document.getElementById('donateOpen').addEventListener('click',function(){gate.hidden=false;tiers.hidden=true;msg.textContent='';newQ();d.showModal();inp.focus();});
+    inp.addEventListener('input',function(){inp.value=inp.value.replace(/\D/g,'').slice(0,3);});
+    document.getElementById('gateForm').addEventListener('submit',function(e){e.preventDefault();
+      if(parseInt(inp.value,10)===ans){gate.hidden=true;tiers.hidden=false;}else{msg.textContent='Not quite. Try this one.';newQ();inp.focus();}});
+    tiers.addEventListener('click',function(e){var b=e.target.closest('.tier');if(!b)return;var w=window.open(b.dataset.url,'_blank','noopener,noreferrer');if(w)w.opener=null;});
+  })();
+  </script>
 </body>
 </html>
