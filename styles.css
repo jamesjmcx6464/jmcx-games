@@ -277,3 +277,4 @@ h2 {
 .tier strong{font-size:1.3rem;margin-right:.4rem}
 .tier:hover{background:var(--play-hover)}
 .donate-note{color:var(--muted);font-size:.85rem;margin-top:1rem}
+.credits-list{list-style:none;padding:0;margin:0}.credits-list li{margin:.5rem 0}.credits-list span{display:block;color:var(--muted);font-size:.85rem}.credits-head{font-weight:700;text-transform:uppercase;font-size:.75rem;letter-spacing:.05em;color:var(--accent);margin-top:1rem!important}

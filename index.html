@@ -22,7 +22,7 @@
 <body>
   <nav class="topbar">
     <span class="topbar-name">JMCX Games</span>
-    <button type="button" class="donate-btn" id="donateOpen">$ Donate</button>
+    <button type="button" class="donate-btn" id="creditsOpen">Credits</button>
   </nav>
   <header class="site-header">
     <div class="brand">
@@ -89,38 +89,20 @@
     <p>Made by James Murray</p>
   </footer>
 
-  <dialog id="donateDialog" class="donate-dialog" aria-labelledby="donateTitle">
+  <dialog id="creditsDialog" class="donate-dialog" aria-labelledby="creditsTitle">
     <form method="dialog" class="donate-close-row"><button class="donate-x" aria-label="Close">&times;</button></form>
-    <h2 id="donateTitle">Support JMCX Games</h2>
-    <div id="gate">
-      <p class="gate-label">Ask a grown-up</p>
-      <form id="gateForm">
-        <label for="gateInput" id="gateQ"></label>
-        <input id="gateInput" inputmode="numeric" autocomplete="off" maxlength="3" required>
-        <button type="submit" class="gate-go">Check</button>
-      </form>
-      <p id="gateMsg" class="gate-msg" aria-live="polite"></p>
-    </div>
-    <div id="tiers" hidden>
-      <button type="button" class="tier" data-url="https://paypal.me/jjmurray64/2"><strong>$2</strong> Data bytes for the bots</button>
-      <button type="button" class="tier" data-url="https://paypal.me/jjmurray64/5"><strong>$5</strong> Buy JMCX a coffee</button>
-    </div>
-    <p class="donate-note">Opens PayPal. Optional, and always appreciated.</p>
+    <h2 id="creditsTitle">Credits</h2>
+    <ul class="credits-list">
+      <li><strong>JMCX</strong><span>Creative Director, CEO of JMCX</span></li>
+      <li class="credits-head">Built with Grok Bot</li>
+      <li><strong>Bean Counter</strong><span>AI Helper Wrangler, Token Saver, Team Coordinator</span></li>
+      <li><strong>Word Blitz Classic</strong><span>Lead Developer, Adventure Mode Designer, Playtest Note-Taker</span></li>
+      <li><strong>Grok Bot</strong><span>Sign-ins, publishing and site setup</span></li>
+    </ul>
+    <p class="donate-note">Worksheet Bank pictures drawn with Gemini in Google AI Studio.</p>
   </dialog>
   <script>
-  (function(){
-    var d=document.getElementById('donateDialog'),q=document.getElementById('gateQ'),inp=document.getElementById('gateInput'),
-        msg=document.getElementById('gateMsg'),gate=document.getElementById('gate'),tiers=document.getElementById('tiers'),ans=0;
-    function r(a,b){return a+Math.floor(Math.random()*(b-a+1));}
-    function newQ(){var a=r(3,9),b=r(3,9),c=r(2,9),plus=Math.random()<0.5;ans=plus?a*b+c:a*b-c;
-      q.textContent='What is '+a+' \u00d7 '+b+' '+(plus?'+':'\u2212')+' '+c+'?';
-      inp.setAttribute('aria-label','What is '+a+' times '+b+(plus?' plus ':' minus ')+c+'?');inp.value='';}
-    document.getElementById('donateOpen').addEventListener('click',function(){gate.hidden=false;tiers.hidden=true;msg.textContent='';newQ();d.showModal();inp.focus();});
-    inp.addEventListener('input',function(){inp.value=inp.value.replace(/\D/g,'').slice(0,3);});
-    document.getElementById('gateForm').addEventListener('submit',function(e){e.preventDefault();
-      if(parseInt(inp.value,10)===ans){gate.hidden=true;tiers.hidden=false;}else{msg.textContent='Not quite. Try this one.';newQ();inp.focus();}});
-    tiers.addEventListener('click',function(e){var b=e.target.closest('.tier');if(!b)return;var w=window.open(b.dataset.url,'_blank','noopener,noreferrer');if(w)w.opener=null;});
-  })();
+  document.getElementById('creditsOpen').addEventListener('click',function(){document.getElementById('creditsDialog').showModal();});
   </script>
 </body>
 </html>
